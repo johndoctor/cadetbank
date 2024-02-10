@@ -24,8 +24,7 @@ class BitcoinProvider extends ChangeNotifier {
       final dio = Dio();
       final response =
           await dio.get('https://api.coindesk.com/v1/bpi/currentprice.json');
-      final data = json.decode(response.data);
-      final bitcoinData = BitcoinModel.fromJson(data);
+      final bitcoinData = BitcoinModel.fromJson(response.data);
       _bitcoinUSDPrice = bitcoinData.bitcoinUSDPrice;
       _error = null;
     } on Exception catch (exception, stackTrace) {
