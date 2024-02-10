@@ -16,8 +16,7 @@ class BitcoinRestClient implements IBitcoinDatasource {
   Future<BitcoinModel> getBitcoinData() async {
     final response =
         await dio.get('https://api.coindesk.com/v1/bpi/currentprice.json');
-    final data = json.decode(response.data);
-    final model = BitcoinModel.fromJson(data);
+    final model = BitcoinModel.fromJson(response.data);
     return model;
   }
 }
